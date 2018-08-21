@@ -1,0 +1,84 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.miservicio.com/banco-ws"
+           targetNamespace="http://www.miservicio.com/banco-ws" elementFormDefault="qualified">
+
+    <xs:element name="getBancoByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bancoId" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getBancoByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bancoInfo" type="tns:bancoInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="bancoInfo">
+        <xs:sequence>
+            <xs:element name="bancoId" type="xs:string"/>
+            <xs:element name="nombre" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getAllBancosRequest">
+        <xs:complexType/>
+    </xs:element>    
+    <xs:element name="getAllBancosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bancoInfo" type="tns:bancoInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>   
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>     
+    <xs:element name="addBancoRequest">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element name="id" type="xs:string"/>
+                <xs:element name="nombre" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addBancoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>            
+                <xs:element name="bancoInfo" type="tns:bancoInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateBancoRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="bancoInfo" type="tns:bancoInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateBancoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteBancoRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="bancoId" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteBancoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>                   
+</xs:schema>
